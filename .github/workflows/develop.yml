@@ -19,7 +19,7 @@ jobs:
         run: npm run test
 
       - name: Sethomepage
-        run: npm run setHomepage
+        run: npm run sethomepage
       - name: Build
         run: CI=false npm run build
 
