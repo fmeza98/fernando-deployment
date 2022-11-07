@@ -3,8 +3,15 @@ on:
   pull_request:
   push:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   test-code:
+    enviroment:
+      name: QA
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
