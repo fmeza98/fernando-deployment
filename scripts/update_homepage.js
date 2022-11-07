@@ -9,4 +9,4 @@ if (json.hasOwnProperty("homepage")) {
   json.homepage = "https://fernando-deployment.netlify.app/";
 }
 
-savefile(pkgJsonPath, JSON.stringify(json, null, 2));
+saveFile(pkgJsonPath, JSON.stringify(json, null, 2));
