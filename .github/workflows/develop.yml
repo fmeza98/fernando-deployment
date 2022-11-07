@@ -18,6 +18,14 @@ jobs:
       - name: Test coverage
         run: npm run test
 
+      - name: Sethomepage
+        run: npm run setHomepage
+      - name: Build
+        run: CI=false npm run build
+
+      - name: deploy to QA-env --> Netlify
+        run: netlify deploy --prod --auth ${{ secrets.NETLIFY_TOKEN }} --site ${{ secrets.SITE_ID}}
+
       - name: Create PR
         uses: medlypharmacy/create-pr-action@main
         env:
