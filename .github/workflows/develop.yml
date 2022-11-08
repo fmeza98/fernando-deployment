@@ -33,3 +33,21 @@ jobs:
 
       - name: deploy to QA env --> Netlify
         run: netlify deploy --prod --auth ${{ secrets.NETLIFY_TOKEN }} --site ${{ secrets.SITE_ID }}
+
+PR-automated:
+  needs: QA-deploy
+  runs-on: ubuntu-latest
+  permissions: write-all
+  steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "16"
+    - name: get branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: get-branch
+    - name: pull-request
+      run: gh pr create --base main --head ${{ steps.get-branch.outputs.branch }} --title "Pulling ${{ steps.get-branch.outputs.branch }} into main" --body "Automated PR"
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
