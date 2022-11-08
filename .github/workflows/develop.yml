@@ -34,7 +34,7 @@ jobs:
       - name: deploy to QA env --> Netlify
         run: netlify deploy --prod --auth ${{ secrets.NETLIFY_TOKEN }} --site ${{ secrets.SITE_ID }}
 
-      - name: Create PR
+     - PRAUTOMATED: 
         permissions: write-all
         steps:
           - uses: actions/checkout@v3
