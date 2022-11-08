@@ -34,7 +34,7 @@ jobs:
       - name: deploy to QA env --> Netlify
         run: netlify deploy --prod --auth ${{ secrets.NETLIFY_TOKEN }} --site ${{ secrets.SITE_ID }}
 
-PR-automated:
+  PR-automated:
   needs: QA-deploy
   runs-on: ubuntu-latest
   permissions: write-all
