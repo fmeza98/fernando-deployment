@@ -35,6 +35,7 @@ jobs:
         run: netlify deploy --prod --auth ${{ secrets.NETLIFY_TOKEN }} --site ${{ secrets.SITE_ID }}
 
   PR-automated:
+  needs: test-code
   runs-on: ubuntu-latest
   permissions: write-all
   steps:
